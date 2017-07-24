@@ -1,0 +1,29 @@
+
+TD, TH {
+    padding: 3px; /* Поля вокруг содержимого ячеек */
+}
+TH {
+    text-align: left; /* Выравнивание по левому краю */
+    background: black; /* Цвет фона */
+    color: white; /* Цвет текста */
+}
+div{
+    display: inline-block;
+    margin: 0 auto;
+    vertical-align: top;
+    margin: 40px;
+}
+.table_div{
+    text-align: center;margin-top: 20px;
+    border: 1px solid black;
+    min-width: 400px;
+}
+.order_div{
+    text-align: left;
+    margin-left: -250px;
+}
+.main_div{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
