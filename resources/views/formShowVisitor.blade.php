@@ -16,30 +16,32 @@
     <script type="text/javascript">
         ymaps.ready(init);
         var myMap,
-        myPlacemark;
+                myPlacemark;
         function init()
         {
             myMap = new ymaps.Map("map", {
-                center: [47.42018, 40.09132],
-                zoom: 14
-            }
-            );
-            var cord = $('#coords').text()
-            var myGeocoder = ymaps.geocode(cord);
-            myGeocoder.then(
-                    function (res) {
-                        myMap.geoObjects.add(res.geoObjects);
-                        var adres = result.geoObjects.get(0).properties.get('metaDataProperty').getAll(); // записываю координаты в переменную
-                        myPlacemark = new ymaps.Placemark([adres], { // пытаюсь передать координаты и поставить метку
-                            hintContent: 'Москва!',
-                            balloonContent: 'Столица России'
-                        });
-                        myMap.geoObjects.add(myPlacemark);
-                    },
-                    function (err) {
-                        // обработка ошибки
+                        center: [47.42018, 40.09132],
+                        zoom: 16
                     }
             );
+            var cord = $('#coords').text()
+            if (cord.indexOf("Новочеркасск") != -1) {
+                var myGeocoder = ymaps.geocode(cord);
+                myGeocoder.then(
+                        function (res) {
+                            myMap.geoObjects.add(res.geoObjects);
+                            var adres = result.geoObjects.get(0).properties.get('metaDataProperty').getAll(); // записываю координаты в переменную
+                            myPlacemark = new ymaps.Placemark([adres], { // пытаюсь передать координаты и поставить метку
+                                hintContent: 'Москва!',
+                                balloonContent: 'Столица России'
+                            });
+                            myMap.geoObjects.add(myPlacemark);
+                        },
+                        function (err) {
+                            // обработка ошибки
+                        }
+                );
+            }
         }
     </script>
 
